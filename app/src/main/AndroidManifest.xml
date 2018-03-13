@@ -33,15 +33,26 @@
                 android:value="com.apps.mmr.maridajeandvinos.MainActivity" />
         </activity>
         <activity
-            android:name=".ProductsActivity"
+            android:name=".WineCategories"
             android:exported="true"
-            android:label="@string/title_activity_products"
+            android:label="@string/title_activity_categorys"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.apps.mmr.maridajeandvinos.MainActivity" />
         </activity>
+        <activity
+            android:name=".FoodCategories"
+            android:exported="true"
+            android:label="@string/title_activity_categorys"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.apps.mmr.maridajeandvinos.MainActivity" />
+        </activity>
+
     </application>
 
 </manifest>

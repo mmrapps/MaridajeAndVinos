@@ -1,6 +1,7 @@
 package com.apps.mmr.maridajeandvinos;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -48,22 +49,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        /*mDatabase = FirebaseDatabase.getInstance().getReference("categories/");
-        Query myQuery = mDatabase.orderByChild("type").equalTo("food");
-
-        myQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("abe", "Categorias comidas: " + dataSnapshot.toString());
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -180,11 +165,17 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        /*if (id == R.id.nav_inicio) {
+        if (id == R.id.nav_home) {
             // Handle the camera action
-        } else */if (id == R.id.nav_wine) {
+        } else if (id == R.id.nav_wine) {
+            Intent intent = new Intent(this, WineCategories.class);
+            intent.putExtra("category", "wines");
+            startActivity(intent);
 
         } else if (id == R.id.nav_food) {
+            Intent intent = new Intent(this, FoodCategories.class);
+            intent.putExtra("category", "foods");
+            startActivity(intent);
 
         } else if (id == R.id.nav_share) {
 

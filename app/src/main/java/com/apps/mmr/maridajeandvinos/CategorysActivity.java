@@ -1,8 +1,6 @@
 package com.apps.mmr.maridajeandvinos;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,8 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,9 +19,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
-public class CategorysActivity extends AppCompatActivity {
+public abstract class CategorysActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private MyAdapter mAdapter;
     private DatabaseReference mDatabase;
@@ -36,11 +31,11 @@ public class CategorysActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categorys);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("¿Qué desea comer?");
+        toolbar.setTitle(getHeaderTittle());
         setSupportActionBar(toolbar);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("categories/");
-        Query myQuery = mDatabase.orderByChild("type").equalTo("food");
+        
+        Query myQuery = getQueryFirebase();
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
         myQuery.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -62,7 +57,7 @@ public class CategorysActivity extends AppCompatActivity {
         // Usar esta línea para mejorar el rendimiento
         // si sabemos que el contenido no va a afectar
         // el tamaño del RecyclerView
-        //mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setHasFixedSize(true);
 
         // Nuestro RecyclerView usará un linear layout manager
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -83,4 +78,8 @@ public class CategorysActivity extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    protected abstract Query getQueryFirebase();
+
+    public abstract  String getHeaderTittle();
 }
