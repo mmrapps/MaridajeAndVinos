@@ -1,5 +1,6 @@
 package com.apps.mmr.maridajeandvinos;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,22 +15,21 @@ import android.view.View;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-public abstract class CategorysActivity extends AppCompatActivity {
+public abstract class CategoriesActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
-    private MyAdapter mAdapter;
+    private GeneralAdapter mAdapter;
     private DatabaseReference mDatabase;
     private StorageReference mStorageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_categorys);
+        setContentView(R.layout.activity_categories);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(getHeaderTittle());
         setSupportActionBar(toolbar);
@@ -41,7 +41,7 @@ public abstract class CategorysActivity extends AppCompatActivity {
         myQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("abe", "Categorias comidas: " + dataSnapshot.toString());
+                Log.d("abe", "Categorias : " + dataSnapshot.toString());
                 mAdapter.setmDataSet(dataSnapshot);
 
             }
@@ -64,7 +64,7 @@ public abstract class CategorysActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(layoutManager);
 
         // Asociamos un adapter (ver más adelante cómo definirlo)
-        mAdapter = new MyAdapter(this, mStorageRef);
+        mAdapter = getAdapter(this, mStorageRef, getIntent().getExtras());
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mAdapter);
 
@@ -78,6 +78,8 @@ public abstract class CategorysActivity extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    protected abstract GeneralAdapter getAdapter(Context context, StorageReference mStorageRef, Bundle extras);
 
     protected abstract Query getQueryFirebase();
 
