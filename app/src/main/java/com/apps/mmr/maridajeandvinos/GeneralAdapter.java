@@ -1,7 +1,9 @@
 package com.apps.mmr.maridajeandvinos;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,31 +28,30 @@ import java.util.Map;
  * Created by angel on 9/03/18.
  */
 
-class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
+abstract class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.ViewHolder>{
 
     private final StorageReference mStorageReference;
-    private List<Category> mListChildren;
+    protected List<Object> mListChildren;
+    protected Map<String, Object> mDataSet;
     Context context;
+    Bundle bundleExtras;
 
     public void setmDataSet(DataSnapshot dataSnapshot) {
-
-        for(DataSnapshot category: dataSnapshot.getChildren()){
-            Category temp = category.getValue(Category.class);
-            temp.setKey(category.getKey());
-            mDataSet.put(category.getKey(), temp);
-            mListChildren.add(temp);
-        }
-
+        mDataSet = getDataSet(dataSnapshot);
+        mListChildren = getListChildren(dataSnapshot);
         notifyDataSetChanged();
     }
 
-    private Map<String, Category> mDataSet;
+    protected abstract Map<String,Object> getDataSet(DataSnapshot dataSnapshot);
+    protected abstract List<Object> getListChildren(DataSnapshot dataSnapshot);
 
-    public MyAdapter(Context context, StorageReference storageReference){
+
+    public GeneralAdapter(Context context, StorageReference storageReference, Bundle extras){
         mStorageReference = storageReference;
-        mDataSet = new HashMap<String, Category>();
-        mListChildren = new ArrayList<Category>();
+        mDataSet = new HashMap<String, Object>();
+        mListChildren = new ArrayList<Object>();
         this.context = context;
+        this.bundleExtras = extras;
 
     }
 
@@ -70,18 +71,19 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         // - obtenemos un elemento del dataset según su posición
         // - reemplazamos el contenido de los views según tales datos
-        holder.personName.setText(mListChildren.get(position).getName());
-        holder.personAge.setText(mListChildren.get(position).getType());
-        mStorageReference.child("categories/" + mListChildren.get(position).getImage()).getDownloadUrl().addOnSuccessListener(
+
+        holder.cardTitle.setText(getCardTitle(position));
+        holder.cardSubtitle.setText(getCardSubtitle(position));
+        mStorageReference.child(getStoragePath() + getCardPhoto(position)).getDownloadUrl().addOnSuccessListener(
                 new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
 
                         Log.d("abe", uri.toString());
-                        Picasso.get().load(uri.toString()).into(holder.personPhoto);
+                        Picasso.get().load(uri.toString()).into(holder.cardPhoto);
                         /*GlideApp.with(context)
                                 .load(uri.toString())
 
@@ -95,8 +97,20 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
             }
         });
 
+        holder.view.setOnClickListener(getOnClickListener(position));
+
 
     }
+
+    protected abstract View.OnClickListener getOnClickListener(final int position);
+
+    protected abstract String getStoragePath();
+
+    protected abstract String getCardPhoto(int position);
+
+    protected abstract String getCardSubtitle(int position);
+
+    protected abstract String getCardTitle(int position);
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
@@ -109,16 +123,22 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-         TextView personName;
-         TextView personAge;
-         ImageView personPhoto;
+         TextView cardTitle;
+         TextView cardSubtitle;
+         ImageView cardPhoto;
+         public View view;
 
-        public ViewHolder(View cv) {
-            super(cv);
+        public ViewHolder(View v) {
+            super(v);
+            this.view = v;
 
-            personName = (TextView)itemView.findViewById(R.id.person_name);
-            personAge = (TextView)itemView.findViewById(R.id.person_age);
-            personPhoto = (ImageView)itemView.findViewById(R.id.person_photo);
+            cardTitle = (TextView)itemView.findViewById(R.id.title);
+            cardSubtitle = (TextView)itemView.findViewById(R.id.subtitle);
+            cardPhoto = (ImageView)itemView.findViewById(R.id.photo);
+
         }
+
     }
+
+
 }

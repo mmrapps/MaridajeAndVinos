@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CategorysActivity"
+            android:name=".CategoriesActivity"
             android:exported="true"
             android:label="@string/title_activity_categorys"
             android:parentActivityName=".MainActivity"
@@ -47,6 +47,46 @@
             android:exported="true"
             android:label="@string/title_activity_categorys"
             android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.apps.mmr.maridajeandvinos.MainActivity" />
+        </activity>
+        <activity
+            android:name=".WinePerCategory"
+            android:exported="true"
+            android:label="@string/title_activity_categorys"
+            android:parentActivityName=".WineCategories"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.apps.mmr.maridajeandvinos.MainActivity" />
+        </activity>
+        <activity
+            android:name=".FoodPerCategory"
+            android:exported="true"
+            android:label="@string/title_activity_categorys"
+            android:parentActivityName=".FoodCategories"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.apps.mmr.maridajeandvinos.MainActivity" />
+        </activity>
+        <activity
+            android:name=".WineDetail"
+            android:exported="true"
+            android:label="@string/title_activity_categorys"
+            android:parentActivityName=".WinePerCategory"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.apps.mmr.maridajeandvinos.MainActivity" />
+        </activity>
+        <activity
+            android:name=".WinePerFood"
+            android:exported="true"
+            android:label="@string/title_activity_categorys"
+            android:parentActivityName=".FoodPerCategory"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
