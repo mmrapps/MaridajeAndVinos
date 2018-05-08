@@ -1,4 +1,4 @@
-package com.apps.mmr.maridajeandvinos;
+package com.apps.mmr.maridajeandvinos.Activitys;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+import com.apps.mmr.maridajeandvinos.Adapters.GeneralAdapter;
+import com.apps.mmr.maridajeandvinos.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

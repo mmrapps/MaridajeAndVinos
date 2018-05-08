@@ -1,4 +1,4 @@
-package com.apps.mmr.maridajeandvinos;
+package com.apps.mmr.maridajeandvinos.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.apps.mmr.maridajeandvinos.Beans.Product;
+import com.apps.mmr.maridajeandvinos.Activitys.WineDetail;
+import com.apps.mmr.maridajeandvinos.Activitys.WinePerFood;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.storage.StorageReference;
 

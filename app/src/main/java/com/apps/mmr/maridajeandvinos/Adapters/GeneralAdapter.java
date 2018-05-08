@@ -1,7 +1,6 @@
-package com.apps.mmr.maridajeandvinos;
+package com.apps.mmr.maridajeandvinos.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.apps.mmr.maridajeandvinos.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +28,7 @@ import java.util.Map;
  * Created by angel on 9/03/18.
  */
 
-abstract class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.ViewHolder>{
+public abstract class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.ViewHolder>{
 
     private final StorageReference mStorageReference;
     protected List<Object> mListChildren;

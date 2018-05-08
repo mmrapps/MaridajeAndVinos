@@ -1,4 +1,4 @@
-package com.apps.mmr.maridajeandvinos;
+package com.apps.mmr.maridajeandvinos.Beans;
 
 /**
  * Created by angel on 9/03/18.

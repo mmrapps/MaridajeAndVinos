@@ -1,8 +1,10 @@
-package com.apps.mmr.maridajeandvinos;
+package com.apps.mmr.maridajeandvinos.Activitys;
 
 import android.content.Context;
 import android.os.Bundle;
 
+import com.apps.mmr.maridajeandvinos.Adapters.GeneralAdapter;
+import com.apps.mmr.maridajeandvinos.Adapters.ProductsAdapter;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.storage.StorageReference;

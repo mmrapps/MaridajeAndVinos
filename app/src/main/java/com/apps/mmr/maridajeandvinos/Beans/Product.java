@@ -1,4 +1,4 @@
-package com.apps.mmr.maridajeandvinos;
+package com.apps.mmr.maridajeandvinos.Beans;
 
 import java.util.HashMap;
 import java.util.Map;

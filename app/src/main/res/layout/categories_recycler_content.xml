@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:id="@+id/recycler_view_categories"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.apps.mmr.maridajeandvinos.CategoriesActivity"
+    tools:context="com.apps.mmr.maridajeandvinos.Activitys.CategoriesActivity"
     tools:showIn="@layout/activity_categories">
 
 </android.support.v7.widget.RecyclerView>
