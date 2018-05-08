@@ -12,14 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="-6dp"
-        tools:layout_editor_absoluteY="-6dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="34dp">
 
         <ImageView
             android:id="@+id/imageWine"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:adjustViewBounds="false"
             app:srcCompat="@drawable/wine"
             tools:layout_editor_absoluteX="34dp"
             tools:layout_editor_absoluteY="81dp" />
@@ -30,7 +31,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:srcCompat="@drawable/food"
+            android:elevation="15dp"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="257dp" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

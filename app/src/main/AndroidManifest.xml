@@ -92,7 +92,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.apps.mmr.maridajeandvinos.MainActivity" />
         </activity>
-
+        <activity android:name=".HomeActivity"></activity>
     </application>
 
 </manifest>
