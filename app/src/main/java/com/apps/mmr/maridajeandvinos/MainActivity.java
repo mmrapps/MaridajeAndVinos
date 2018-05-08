@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity
     private MenuItem mSearchAction;
     private boolean isSearchOpened = false;
     private EditText editSearch;
+    public ImageView imageWine;
+    public ImageView imageFood;
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -69,6 +72,28 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //Menú principal con imagenes clickeables
+        imageWine = findViewById(R.id.imageWine);
+        imageWine.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, WineCategories.class);
+                intent.putExtra("category", "wines");
+                startActivity(intent);
+            }
+        });
+
+        imageFood = findViewById(R.id.imageFood);
+        imageFood.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, FoodCategories.class);
+                intent.putExtra("category", "foods");
+                startActivity(intent);
+            }
+        });
+
     }
 
     protected void handleMenuSearch(){
@@ -94,7 +119,7 @@ public class MainActivity extends AppCompatActivity
             action.setCustomView(R.layout.search_bar);//add the custom view
             action.setDisplayShowTitleEnabled(false); //hide the title
 
-            editSearch = (EditText)action.getCustomView().findViewById(R.id.edtSearch); //the text editor
+            editSearch = (EditText) action.getCustomView().findViewById(R.id.editSearch); //the text editor
 
             //this is a listener to do a search when the user clicks on search button
             editSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -114,7 +139,7 @@ public class MainActivity extends AppCompatActivity
 
             editSearch.requestFocus();
 
-            //open the keyboard focused in the edtSearch
+            //open the keyboard focused in the editSearch
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.showSoftInput(editSearch, InputMethodManager.SHOW_IMPLICIT);
 
