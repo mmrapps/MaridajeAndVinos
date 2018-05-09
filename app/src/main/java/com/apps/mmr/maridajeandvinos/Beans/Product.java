@@ -2,6 +2,7 @@ package com.apps.mmr.maridajeandvinos.Beans;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Product {
     private String key;
@@ -9,7 +10,7 @@ public class Product {
     private String description;
     private String image;
     private String name;
-    private Map<String, Boolean> match_with = new HashMap<>();
+    private Map<String, Boolean> match_with = new TreeMap<String, Boolean>();
 
     public String getKey() {
         return key;
@@ -56,7 +57,7 @@ public class Product {
     }
 
     public void setMatch_with(Map<String, Boolean> match_with) {
-        this.match_with = match_with;
+        this.match_with = new TreeMap<String, Boolean>(match_with);
     }
 
 

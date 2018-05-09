@@ -28,7 +28,11 @@ public class ProductsAdapter extends GeneralAdapter {
         for(DataSnapshot product: dataSnapshot.getChildren()){
             Product temp = product.getValue(Product.class);
             temp.setKey(product.getKey());
-            mDataSet.put(product.getKey(), temp);
+            if(bundleExtras.getString("match_with")!=null) {
+                if (bundleExtras.getString("match_with").contains(product.getKey()))
+                    mDataSet.put(product.getKey(), temp);
+            }
+            else mDataSet.put(product.getKey(), temp);
         }
         return  mDataSet;
     }
@@ -39,7 +43,11 @@ public class ProductsAdapter extends GeneralAdapter {
         for(DataSnapshot product: dataSnapshot.getChildren()){
             Product temp = product.getValue(Product.class);
             temp.setKey(product.getKey());
-            mListChildren.add(temp);
+            if(bundleExtras.getString("match_with")!=null) {
+                if (bundleExtras.getString("match_with").contains(product.getKey()))
+                    mListChildren.add(temp);
+            }
+            else mListChildren.add(temp);
         }
         return mListChildren;
     }
@@ -67,8 +75,8 @@ public class ProductsAdapter extends GeneralAdapter {
                         intent.putExtra("title", element.getName());
                         intent.putExtra("description", element.getDescription());
                         String match_with = "";
-                        for(String wine: element.getMatch_with().keySet())
-                            match_with += wine + ":";
+                        for(Map.Entry<String, ?> entry: element.getMatch_with().entrySet())
+                            match_with += entry.getKey() + ":";
                         intent.putExtra("match_with", match_with);
                         context.startActivity(intent);
                         return;
