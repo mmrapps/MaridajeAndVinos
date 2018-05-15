@@ -12,6 +12,11 @@ import com.google.firebase.storage.StorageReference;
 
 public class WinePerFood extends CategoriesActivity {
     @Override
+    protected String getHeaderSubtitle() {
+        return "Se recomienda con los siguientes vinos";
+    }
+
+    @Override
     protected GeneralAdapter getAdapter(Context context, StorageReference mStorageRef, Bundle extras) {
         return new ProductsAdapter(context, mStorageRef, extras);
     }

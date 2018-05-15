@@ -13,6 +13,11 @@ public class WinePerCategory extends CategoriesActivity {
 
 
     @Override
+    protected String getHeaderSubtitle() {
+        return null;
+    }
+
+    @Override
     protected GeneralAdapter getAdapter(Context context, StorageReference mStorageRef, Bundle extras) {
         return new ProductsAdapter(context, mStorageRef, extras);
     }

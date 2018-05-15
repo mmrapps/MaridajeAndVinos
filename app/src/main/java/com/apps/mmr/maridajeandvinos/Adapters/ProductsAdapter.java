@@ -90,7 +90,7 @@ public class ProductsAdapter extends GeneralAdapter {
 
     @Override
     protected String getStoragePath() {
-        return "images/";
+        return "products/";
     }
 
     @Override

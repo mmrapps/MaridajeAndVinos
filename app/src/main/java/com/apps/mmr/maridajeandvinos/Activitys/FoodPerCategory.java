@@ -11,6 +11,11 @@ import com.google.firebase.storage.StorageReference;
 
 public class FoodPerCategory extends CategoriesActivity {
     @Override
+    protected String getHeaderSubtitle() {
+        return null;
+    }
+
+    @Override
     protected GeneralAdapter getAdapter(Context context, StorageReference mStorageRef, Bundle extras) {
         return new ProductsAdapter(context, mStorageRef, extras);
     }
