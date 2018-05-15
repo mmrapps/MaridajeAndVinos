@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -80,10 +82,13 @@ public abstract class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter
         mStorageReference.child(getStoragePath() + getCardPhoto(position)).getDownloadUrl().addOnSuccessListener(
                 new OnSuccessListener<Uri>() {
                     @Override
-                    public void onSuccess(Uri uri) {
+                    public void onSuccess(final Uri uri) {
 
                         Log.d("abe", uri.toString());
-                        Picasso.get().load(uri.toString()).into(holder.cardPhoto);
+                        Picasso inst = Picasso.get();
+                        inst.setIndicatorsEnabled(true);
+                        inst.load(uri.toString())
+                                .into(holder.cardPhoto);
                         /*GlideApp.with(context)
                                 .load(uri.toString())
 
