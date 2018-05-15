@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -122,13 +123,14 @@ public class HomeActivity extends AppCompatActivity
                 @Override
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                     if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                        doSearch();
+                        doSearch(v);
                         return true;
                     }
                     return false;
                 }
 
-                private void doSearch() {
+                private void doSearch(TextView v) {
+                    Log.d("abe", "String to search " + v.getText());
                 }
             });
 
