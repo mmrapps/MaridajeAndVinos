@@ -92,6 +92,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.apps.mmr.maridajeandvinos.Activitys.MainActivity" />
         </activity>
+        <activity
+            android:name=".Activitys.SearchActivity"
+            android:exported="true"
+            android:label="@string/title_activity_categorys"
+            android:parentActivityName=".Activitys.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.apps.mmr.maridajeandvinos.Activitys.MainActivity" />
+        </activity>
         <activity android:name=".Activitys.HomeActivity"></activity>
     </application>
 

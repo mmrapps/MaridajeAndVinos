@@ -131,6 +131,11 @@ public class HomeActivity extends AppCompatActivity
 
                 private void doSearch(TextView v) {
                     Log.d("abe", "String to search " + v.getText());
+                    Intent intent = new Intent(HomeActivity.this, SearchActivity.class);
+                    intent.putExtra("search", v.getText());
+                    intent.putExtra("another", "nanana");
+                    startActivity(intent);
+
                 }
             });
 
