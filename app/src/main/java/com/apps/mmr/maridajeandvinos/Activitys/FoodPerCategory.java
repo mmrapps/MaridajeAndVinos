@@ -20,9 +20,9 @@ public class FoodPerCategory extends CategoriesActivity {
         Bundle bundle = getIntent().getExtras();
         Query myQuery;
         if(bundle.getString("selected") != null)
-            myQuery  = FirebaseDatabase.getInstance().getReference("foods/").orderByChild("category").equalTo(bundle.getString("selected"));
+            myQuery  = FirebaseDatabase.getInstance().getReference("products/").orderByChild("category").equalTo(bundle.getString("selected"));
         else
-            myQuery = FirebaseDatabase.getInstance().getReference("foods/").orderByChild("category").equalTo("cerdo_embutidos");
+            myQuery = FirebaseDatabase.getInstance().getReference("products/").orderByChild("category").equalTo("cerdo_embutidos");
         return myQuery;
     }
 

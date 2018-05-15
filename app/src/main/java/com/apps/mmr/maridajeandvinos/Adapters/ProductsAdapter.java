@@ -60,28 +60,28 @@ public class ProductsAdapter extends GeneralAdapter {
                 Product element = (Product) mListChildren.get(position);
                 Log.d("abe", "Clickeado " + element) ;
                 Intent intent;
-                if(bundleExtras.getString("selected") != null && bundleExtras.getString("type") != null){
-                    if(bundleExtras.getString("type").equalsIgnoreCase("wine")) {
-                        intent = new Intent(context, WineDetail.class);
-                        intent.putExtra("selected", element.getKey());
-                        intent.putExtra("title", element.getName());
-                        intent.putExtra("description", element.getDescription());
-                        context.startActivity(intent);
-                        return;
-                    }
-                    if(bundleExtras.getString("type").equalsIgnoreCase("food")) {
-                        intent = new Intent(context, WinePerFood.class);
-                        intent.putExtra("selected", element.getKey());
-                        intent.putExtra("title", element.getName());
-                        intent.putExtra("description", element.getDescription());
-                        String match_with = "";
-                        for(Map.Entry<String, ?> entry: element.getMatch_with().entrySet())
-                            match_with += entry.getKey() + ":";
-                        intent.putExtra("match_with", match_with);
-                        context.startActivity(intent);
-                        return;
-                    }
+
+                if(element.getType().equalsIgnoreCase("wine")) {
+                    intent = new Intent(context, WineDetail.class);
+                    intent.putExtra("selected", element.getKey());
+                    intent.putExtra("title", element.getName());
+                    intent.putExtra("description", element.getDescription());
+                    context.startActivity(intent);
+                    return;
                 }
+                if(element.getType().equalsIgnoreCase("food")) {
+                    intent = new Intent(context, WinePerFood.class);
+                    intent.putExtra("selected", element.getKey());
+                    intent.putExtra("title", element.getName());
+                    intent.putExtra("description", element.getDescription());
+                    String match_with = "";
+                    for(Map.Entry<String, ?> entry: element.getMatch_with().entrySet())
+                        match_with += entry.getKey() + ":";
+                    intent.putExtra("match_with", match_with);
+                    context.startActivity(intent);
+                    return;
+                }
+
 
 
             }

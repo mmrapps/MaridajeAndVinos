@@ -20,11 +20,11 @@ public class SearchActivity extends CategoriesActivity {
         Bundle bundle = getIntent().getExtras();
         Query myQuery;
         if(bundle.getString("search") != null)
-            myQuery  = FirebaseDatabase.getInstance().getReference("wines/").orderByChild("name")
+            myQuery  = FirebaseDatabase.getInstance().getReference("products/").orderByChild("name")
                     .startAt(bundle.getString("search"))
                 .endAt(bundle.getString("search") + "\uf8ff");
         else
-            myQuery = FirebaseDatabase.getInstance().getReference("wines").child("no_existe");
+            myQuery = FirebaseDatabase.getInstance().getReference("products").child("no_existe");
         return  myQuery;
     }
 

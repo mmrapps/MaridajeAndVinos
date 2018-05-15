@@ -41,7 +41,7 @@ public class WineDetail extends AppCompatActivity {
         TextView wineDescription = (TextView)findViewById(R.id.wineDetail);
         wineDescription.setText(getIntent().getExtras().getString("description"));
 
-        Query myQuery = FirebaseDatabase.getInstance().getReference().child("foods/").orderByChild("match_with/"
+        Query myQuery = FirebaseDatabase.getInstance().getReference().child("products/").orderByChild("match_with/"
                 + getIntent().getExtras().getString("selected")).equalTo(true);
         mStorageRef = FirebaseStorage.getInstance().getReference();
 

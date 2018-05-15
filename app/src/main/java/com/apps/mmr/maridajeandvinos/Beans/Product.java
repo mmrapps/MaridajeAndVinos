@@ -10,6 +10,7 @@ public class Product {
     private String description;
     private String image;
     private String name;
+    private String type;
     private Map<String, Boolean> match_with = new TreeMap<String, Boolean>();
 
     public String getKey() {
@@ -73,5 +74,13 @@ public class Product {
         this.description = description;
         this.image = image;
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

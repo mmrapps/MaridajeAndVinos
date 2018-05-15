@@ -22,11 +22,11 @@ public class WinePerFood extends CategoriesActivity {
         Log.d("abe", bundle.getString("match_with"));
         Query myQuery;
         if(bundle.getString("match_with") != null)
-            myQuery  = FirebaseDatabase.getInstance().getReference("wines/").orderByKey().startAt(
+            myQuery  = FirebaseDatabase.getInstance().getReference("products/").orderByKey().startAt(
                     bundle.getString("match_with").split(":")[0]).endAt(
                     bundle.getString("match_with").split(":")[bundle.getString("match_with").split(":").length-1]);
         else
-            myQuery = FirebaseDatabase.getInstance().getReference("wines/").orderByChild("category").equalTo("blanco");
+            myQuery = FirebaseDatabase.getInstance().getReference("products/").orderByChild("category").equalTo("blanco");
         return myQuery;
     }
 
