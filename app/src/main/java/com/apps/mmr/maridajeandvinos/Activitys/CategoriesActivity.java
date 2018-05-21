@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,12 +34,15 @@ public abstract class CategoriesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categories);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(getHeaderTittle());
-        toolbar.setSubtitle("Algo por acá");
+
+
         setSupportActionBar(toolbar);
 
         
         Query myQuery = getQueryFirebase();
         mStorageRef = FirebaseStorage.getInstance().getReference();
+
+        setToolbarBackground(mStorageRef);
 
         myQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -83,6 +85,9 @@ public abstract class CategoriesActivity extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    protected abstract void setToolbarBackground(StorageReference mStorageRef);
+    protected abstract int getToolbarBackground();
 
     protected abstract String getHeaderSubtitle();
 

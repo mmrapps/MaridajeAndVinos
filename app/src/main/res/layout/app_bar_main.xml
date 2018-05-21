@@ -24,13 +24,13 @@
     <include layout="@layout/content_main" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/shareicon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@color/colorPrimary"
-        app:srcCompat="@drawable/ic_add_white" />
+        app:srcCompat="@drawable/ic_share_white_48dp" />
         app:elevation="14dp"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 

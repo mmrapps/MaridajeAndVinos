@@ -47,6 +47,7 @@ public class CategoriesAdapter extends GeneralAdapter {
                     intent.putExtra("selected",element.getKey());
                     intent.putExtra("title", element.getName());
                     intent.putExtra("type", element.getType());
+                    intent.putExtra("uri", element.getImage());
                     context.startActivity(intent);
                     return;
                 }
