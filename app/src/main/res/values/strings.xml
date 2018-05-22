@@ -105,4 +105,12 @@
     </string>
     <string name="todo">TODO</string>
     <string name="title_activity_products">ProductsActivity</string>
+    <string name="send_to">Compartir esta app con</string>
+    <string name="share_text">Hola, descarga esta super app...</string>
+    <string name="food_cat_title">¿Qué desea comer?</string>
+    <string name="foods">Comidas</string>
+    <string name="search_title">Búsqueda</string>
+    <string name="wine_cat_title">¿Qué tipo de vino desea?</string>
+    <string name="wine">Vino</string>
+    <string name="wine_per_food_title">Se recomienda con los siguientes vinos</string>
 </resources>

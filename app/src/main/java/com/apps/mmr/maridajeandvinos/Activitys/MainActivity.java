@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.apps.mmr.maridajeandvinos.R;
 
 public class MainActivity extends AppCompatActivity {
-    private static int SPLASH_TIME_OUT = 4000; //Milisegundos
+    private static int SPLASH_TIME_OUT = 2500; //Milisegundos
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

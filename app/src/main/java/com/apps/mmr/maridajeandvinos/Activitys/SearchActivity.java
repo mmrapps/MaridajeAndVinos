@@ -2,6 +2,7 @@ package com.apps.mmr.maridajeandvinos.Activitys;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.apps.mmr.maridajeandvinos.Adapters.GeneralAdapter;
@@ -41,12 +42,13 @@ public class SearchActivity extends CategoriesActivity {
         if(searchString!=null) {
             searchString = searchString.trim();
             searchString = searchString.toUpperCase().charAt(0) + searchString.substring(1,searchString.length());
+            Log.d("abe", "String to search: " + searchString);
         }
 
         if(searchString != null)
             myQuery  = FirebaseDatabase.getInstance().getReference("products/").orderByChild("name")
                     .startAt(searchString)
-                .endAt(bundle.getString("search") + "\uf8ff");
+                .endAt(searchString + "\uf8ff");
         else
             myQuery = FirebaseDatabase.getInstance().getReference("products").child("no_existe");
         return  myQuery;
@@ -54,6 +56,6 @@ public class SearchActivity extends CategoriesActivity {
 
     @Override
     public String getHeaderTittle() {
-        return "Búsqueda";
+        return getString(R.string.search_title);
     }
 }

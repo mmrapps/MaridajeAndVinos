@@ -69,7 +69,7 @@ public class WinePerCategory extends CategoriesActivity {
     @Override
     public String getHeaderTittle() {
         Bundle bundle = getIntent().getExtras();
-        if (bundle.getString("title") != null) return "Vino " + bundle.getString("title");
-        else return "Vino";
+        if (bundle.getString("title") != null) return getString(R.string.wine) + " " + bundle.getString("title");
+        else return getString(R.string.wine);
     }
 }

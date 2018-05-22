@@ -69,6 +69,6 @@ public class FoodPerCategory extends CategoriesActivity {
     public String getHeaderTittle() {
         Bundle bundle = getIntent().getExtras();
         if (bundle.getString("title") != null) return bundle.getString("title");
-        else return "Comidas";
+        else return getString(R.string.foods);
     }
 }

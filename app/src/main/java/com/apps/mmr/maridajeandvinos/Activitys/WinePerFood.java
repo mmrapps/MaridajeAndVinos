@@ -26,7 +26,7 @@ public class WinePerFood extends CategoriesActivity {
 
     @Override
     protected String getHeaderSubtitle() {
-        return "Se recomienda con los siguientes vinos";
+        return getString(R.string.wine_per_food_title);
     }
 
     @Override
@@ -52,6 +52,6 @@ public class WinePerFood extends CategoriesActivity {
     public String getHeaderTittle() {
         Bundle bundle = getIntent().getExtras();
         if (bundle.getString("title") != null) return bundle.getString("title");
-        else return "Comidas";
+        else return getString(R.string.foods);
     }
 }
