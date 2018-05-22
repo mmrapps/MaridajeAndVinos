@@ -219,6 +219,9 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.nav_help) {
+            Intent intent = new Intent(this, HelpActivity.class);
+            intent.putExtra("category", "help");
+            startActivity(intent);
 
         }
 
