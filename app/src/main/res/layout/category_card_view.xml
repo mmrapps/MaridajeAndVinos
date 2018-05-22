@@ -5,14 +5,14 @@
     android:id="@+id/cv"
     android:layout_width="match_parent"
     android:layout_height="128dp"
-    app:cardElevation="24dp"
+    app:cardElevation="8dp"
     android:layout_margin="8dp"
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/common_google_signin_btn_text_dark_focused">
+        android:background="@color/White">
 
         <ImageView
             android:id="@+id/photo"
@@ -28,9 +28,13 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
+            android:shadowColor="@color/TransparentGrey"
+            android:shadowDx="9"
+            android:shadowDy="9"
+            android:shadowRadius="0.01"
             android:textColor="@color/cardview_light_background"
-            android:textSize="36sp"
-            android:textStyle="bold" />
+            android:textSize="30sp"
+            android:textStyle="normal" />
 
 
         <TextView
