@@ -47,6 +47,6 @@ public class WineCategories extends CategoriesActivity {
 
     @Override
     public String getHeaderTittle() {
-        return "¿Qué tipo de vino desea?";
+        return getString(R.string.wine_cat_title);
     }
 }

@@ -95,5 +95,5 @@ public abstract class CategoriesActivity extends AppCompatActivity {
 
     protected abstract Query getQueryFirebase();
 
-    public abstract  String getHeaderTittle();
+    public abstract String getHeaderTittle();
 }

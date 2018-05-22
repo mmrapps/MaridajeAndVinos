@@ -47,6 +47,6 @@ public class FoodCategories extends CategoriesActivity {
 
     @Override
     public String getHeaderTittle() {
-        return "Qué desea comer?";
+        return getString(R.string.food_cat_title);
     }
 }
