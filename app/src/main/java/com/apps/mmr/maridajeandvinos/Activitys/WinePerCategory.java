@@ -18,6 +18,7 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 public class WinePerCategory extends CategoriesActivity {
+    private static String lastSelected = "blanco";
 
 
     @Override
@@ -61,9 +62,8 @@ public class WinePerCategory extends CategoriesActivity {
         Bundle bundle = getIntent().getExtras();
         Query myQuery;
         if(bundle != null && bundle.getString("selected") != null)
-            myQuery  = FirebaseDatabase.getInstance().getReference("products/").orderByChild("category").equalTo(bundle.getString("selected"));
-        else
-            myQuery = FirebaseDatabase.getInstance().getReference("products/").orderByChild("category").equalTo("blanco");
+            lastSelected = bundle.getString("selected");
+        myQuery = FirebaseDatabase.getInstance().getReference("products/").orderByChild("category").equalTo(lastSelected);
         return myQuery;
     }
 

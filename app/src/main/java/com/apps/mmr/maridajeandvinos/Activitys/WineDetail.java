@@ -54,7 +54,7 @@ public class WineDetail extends AppCompatActivity {
 
 
         Query myQuery = FirebaseDatabase.getInstance().getReference().child("products/").orderByChild("match_with/"
-                + getIntent().getExtras().getString("selected")).equalTo(true);
+                + bundle.getString("selected")).equalTo(true);
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
         if(bundle != null &&bundle.getString("uri") != null) mStorageRef.child("products/" + bundle.getString("uri")).getDownloadUrl().addOnSuccessListener(

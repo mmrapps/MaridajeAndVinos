@@ -18,6 +18,11 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 public class FoodPerCategory extends CategoriesActivity {
+
+    private static String lastSelected = "cerdo_embutidos";
+
+
+
     @Override
     protected void setToolbarBackground(StorageReference mStorageRef) {
         final ImageView image = (ImageView) findViewById(R.id.place_image);
@@ -60,9 +65,8 @@ public class FoodPerCategory extends CategoriesActivity {
         Bundle bundle = getIntent().getExtras();
         Query myQuery;
         if(bundle != null && bundle.getString("selected") != null)
-            myQuery  = FirebaseDatabase.getInstance().getReference("products/").orderByChild("category").equalTo(bundle.getString("selected"));
-        else
-            myQuery = FirebaseDatabase.getInstance().getReference("products/").orderByChild("category").equalTo("cerdo_embutidos");
+            lastSelected =  bundle.getString("selected");
+        myQuery = FirebaseDatabase.getInstance().getReference("products/").orderByChild("category").equalTo(lastSelected);
         return myQuery;
     }
 
