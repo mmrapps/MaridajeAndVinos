@@ -38,7 +38,7 @@ public class SearchActivity extends CategoriesActivity {
     protected Query getQueryFirebase() {
         Bundle bundle = getIntent().getExtras();
         Query myQuery;
-        String searchString = bundle.getString("search");
+        String searchString = (bundle != null) ? bundle.getString("search") : null;
         if(searchString!=null) {
             searchString = searchString.trim();
             searchString = searchString.toUpperCase().charAt(0) + searchString.substring(1,searchString.length());

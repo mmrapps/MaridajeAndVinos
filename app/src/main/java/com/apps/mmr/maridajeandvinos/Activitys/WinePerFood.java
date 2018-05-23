@@ -58,7 +58,7 @@ public class WinePerFood extends CategoriesActivity {
         Bundle bundle = getIntent().getExtras();
         Log.d("abe", bundle.getString("match_with"));
         Query myQuery;
-        if(bundle.getString("match_with") != null)
+        if(bundle != null && bundle.getString("match_with") != null)
             myQuery  = FirebaseDatabase.getInstance().getReference("products/").orderByKey().startAt(
                     bundle.getString("match_with").split(":")[0]).endAt(
                     bundle.getString("match_with").split(":")[bundle.getString("match_with").split(":").length-1]);
@@ -70,7 +70,7 @@ public class WinePerFood extends CategoriesActivity {
     @Override
     public String getHeaderTittle() {
         Bundle bundle = getIntent().getExtras();
-        if (bundle.getString("title") != null) return bundle.getString("title");
+        if (bundle != null && bundle.getString("title") != null) return bundle.getString("title");
         else return getString(R.string.foods);
     }
 }

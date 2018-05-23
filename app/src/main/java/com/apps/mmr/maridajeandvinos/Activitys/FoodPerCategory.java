@@ -22,7 +22,8 @@ public class FoodPerCategory extends CategoriesActivity {
     protected void setToolbarBackground(StorageReference mStorageRef) {
         final ImageView image = (ImageView) findViewById(R.id.place_image);
         final Bundle bundle = getIntent().getExtras();
-        mStorageRef.child("categories/" + bundle.getString("uri")).getDownloadUrl().addOnSuccessListener(
+        if(bundle != null && bundle.getString("uri") != null)
+            mStorageRef.child("categories/" + bundle.getString("uri")).getDownloadUrl().addOnSuccessListener(
                 new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(final Uri uri) {
@@ -58,7 +59,7 @@ public class FoodPerCategory extends CategoriesActivity {
     protected Query getQueryFirebase() {
         Bundle bundle = getIntent().getExtras();
         Query myQuery;
-        if(bundle.getString("selected") != null)
+        if(bundle != null && bundle.getString("selected") != null)
             myQuery  = FirebaseDatabase.getInstance().getReference("products/").orderByChild("category").equalTo(bundle.getString("selected"));
         else
             myQuery = FirebaseDatabase.getInstance().getReference("products/").orderByChild("category").equalTo("cerdo_embutidos");
@@ -68,7 +69,7 @@ public class FoodPerCategory extends CategoriesActivity {
     @Override
     public String getHeaderTittle() {
         Bundle bundle = getIntent().getExtras();
-        if (bundle.getString("title") != null) return bundle.getString("title");
+        if (bundle != null && bundle.getString("title") != null) return bundle.getString("title");
         else return getString(R.string.foods);
     }
 }
