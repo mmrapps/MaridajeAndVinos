@@ -46,7 +46,7 @@ public class ProductsAdapter extends GeneralAdapter {
         for(DataSnapshot product: dataSnapshot.getChildren()){
             Product temp = product.getValue(Product.class);
             temp.setKey(product.getKey());
-            if(bundleExtras.getString("match_with")!=null) {
+            if(bundleExtras != null && bundleExtras.getString("match_with")!=null) {
                 if (bundleExtras.getString("match_with").contains(product.getKey()))
                     mListChildren.add(temp);
             }
