@@ -7,7 +7,7 @@
     <string name="action_settings">Settings</string>
     <string name="search">Buscar</string>
 
-    <string name="app_slogan">Elija un vino y/o su maridaje fácilmente</string>
+    <string name="app_slogan">La combiación perfecta</string>
     <string name="nav_home">Inicio</string>
     <string name="nav_wine">Vinos</string>
     <string name="nav_food">Comida</string>
@@ -108,10 +108,10 @@
     <string name="title_activity_products">ProductsActivity</string>
     <string name="send_to">Compartir esta app con</string>
     <string name="share_text">Hola, descarga esta super app...</string>
-    <string name="food_cat_title">¿Qué desea comer?</string>
+    <string name="food_cat_title">¿Qué va a comer?</string>
     <string name="foods">Comidas</string>
     <string name="search_title">Búsqueda</string>
-    <string name="wine_cat_title">¿Qué tipo de vino desea?</string>
+    <string name="wine_cat_title">¿Qué vino tomará?</string>
     <string name="wine">Vino</string>
     <string name="wine_per_food_title">Se recomienda con los siguientes vinos</string>
 

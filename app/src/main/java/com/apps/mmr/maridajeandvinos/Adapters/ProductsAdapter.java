@@ -18,8 +18,11 @@ import java.util.List;
 import java.util.Map;
 
 public class ProductsAdapter extends GeneralAdapter {
-    public ProductsAdapter(Context context, StorageReference storageReference, Bundle extras) {
+    private final boolean goDetail;
+
+    public ProductsAdapter(Context context, StorageReference storageReference, Bundle extras, boolean goDetail) {
         super(context, storageReference, extras);
+        this.goDetail = goDetail;
     }
 
     @Override
@@ -60,6 +63,8 @@ public class ProductsAdapter extends GeneralAdapter {
                 Product element = (Product) mListChildren.get(position);
                 Log.d("abe", "Clickeado " + element) ;
                 Intent intent;
+
+                if(!goDetail) return;
 
                 if(element.getType().equalsIgnoreCase("wine")) {
                     intent = new Intent(context, WineDetail.class);

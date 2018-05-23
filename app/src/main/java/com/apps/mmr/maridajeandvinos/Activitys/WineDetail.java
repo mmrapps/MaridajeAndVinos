@@ -72,7 +72,7 @@ public class WineDetail extends AppCompatActivity {
         mRecyclerView.setLayoutManager(layoutManager);
 
         // Asociamos un adapter (ver más adelante cómo definirlo)
-        mAdapter = new ProductsAdapter(this, mStorageRef, getIntent().getExtras());
+        mAdapter = new ProductsAdapter(this, mStorageRef, getIntent().getExtras(), false);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mAdapter);
 

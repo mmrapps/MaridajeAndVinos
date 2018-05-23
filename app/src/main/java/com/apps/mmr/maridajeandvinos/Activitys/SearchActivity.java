@@ -31,7 +31,7 @@ public class SearchActivity extends CategoriesActivity {
 
     @Override
     protected GeneralAdapter getAdapter(Context context, StorageReference mStorageRef, Bundle extras) {
-        return new ProductsAdapter(context, mStorageRef, extras);
+        return new ProductsAdapter(context, mStorageRef, extras, true);
     }
 
     @Override
