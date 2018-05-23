@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.apps.mmr.maridajeandvinos.Adapters.GeneralAdapter;
 import com.apps.mmr.maridajeandvinos.R;
@@ -34,7 +35,8 @@ public abstract class CategoriesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categories);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(getHeaderTittle());
-
+        TextView textHeader = (TextView)findViewById(R.id.toolbar_text);
+        textHeader.setText(getHeaderSubtitle());
 
         setSupportActionBar(toolbar);
 

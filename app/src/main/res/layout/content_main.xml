@@ -48,10 +48,10 @@
                     android:shadowDx="9"
                     android:shadowDy="9"
                     android:shadowRadius="0.01"
+                    android:text="@string/main_menu_wine"
                     android:textColor="@color/cardview_light_background"
                     android:textSize="30sp"
-                    android:textStyle="normal"
-                    android:text="Buscar comida"/>
+                    android:textStyle="normal" />
 
             </RelativeLayout>
 
@@ -92,10 +92,10 @@
                     android:shadowDx="9"
                     android:shadowDy="9"
                     android:shadowRadius="0.01"
+                    android:text="@string/main_menu_food"
                     android:textColor="@color/cardview_light_background"
                     android:textSize="30sp"
-                    android:textStyle="normal"
-                    android:text="Buscar vino" />
+                    android:textStyle="normal" />
 
             </RelativeLayout>
 

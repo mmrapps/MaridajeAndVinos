@@ -71,6 +71,7 @@ public class ProductsAdapter extends GeneralAdapter {
                     intent.putExtra("selected", element.getKey());
                     intent.putExtra("title", element.getName());
                     intent.putExtra("description", element.getDescription());
+                    intent.putExtra("uri", element.getImage());
                     context.startActivity(intent);
                     return;
                 }
@@ -79,6 +80,7 @@ public class ProductsAdapter extends GeneralAdapter {
                     intent.putExtra("selected", element.getKey());
                     intent.putExtra("title", element.getName());
                     intent.putExtra("description", element.getDescription());
+                    intent.putExtra("uri", element.getImage());
                     String match_with = "";
                     for(Map.Entry<String, ?> entry: element.getMatch_with().entrySet())
                         match_with += entry.getKey() + ":";

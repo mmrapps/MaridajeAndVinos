@@ -1,22 +1,41 @@
 package com.apps.mmr.maridajeandvinos.Activitys;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.ImageView;
 
 import com.apps.mmr.maridajeandvinos.Adapters.GeneralAdapter;
 import com.apps.mmr.maridajeandvinos.Adapters.ProductsAdapter;
 import com.apps.mmr.maridajeandvinos.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class WinePerFood extends CategoriesActivity {
     @Override
     protected void setToolbarBackground(StorageReference mStorageRef) {
-        ImageView image = (ImageView) findViewById(R.id.place_image);
-        image.setImageResource(getToolbarBackground());
+        final Bundle bundle = getIntent().getExtras();
+        final ImageView image = (ImageView) findViewById(R.id.place_image);
+        if(bundle != null &&bundle.getString("uri") != null) mStorageRef.child("products/" + bundle.getString("uri")).getDownloadUrl().addOnSuccessListener(
+                new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(final Uri uri) {
+                        Picasso inst = Picasso.get();
+                        inst.setIndicatorsEnabled(true);
+                        inst.load(uri)
+                                .into(image);}
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("abe", "Erorr");
+            }
+        });
     }
 
     @Override

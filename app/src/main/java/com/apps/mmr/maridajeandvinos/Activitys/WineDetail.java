@@ -1,7 +1,9 @@
 package com.apps.mmr.maridajeandvinos.Activitys;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,11 +13,14 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.apps.mmr.maridajeandvinos.Adapters.GeneralAdapter;
 import com.apps.mmr.maridajeandvinos.Adapters.ProductsAdapter;
 import com.apps.mmr.maridajeandvinos.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +29,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 
 public class WineDetail extends AppCompatActivity {
@@ -35,16 +41,36 @@ public class WineDetail extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle bundle = getIntent().getExtras();
         setContentView(R.layout.activity_wine_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(getIntent().getExtras().getString("title"));
+        TextView textHeader = (TextView)findViewById(R.id.toolbar_text);
+        textHeader.setText(getHeaderSubtitle());
         setSupportActionBar(toolbar);
         TextView wineDescription = (TextView)findViewById(R.id.wineDetail);
-        wineDescription.setText(getIntent().getExtras().getString("description"));
+        if(bundle != null &&bundle.getString("description") != null) wineDescription.setText(bundle.getString("description"));
+        final ImageView image = (ImageView) findViewById(R.id.place_image);
+
 
         Query myQuery = FirebaseDatabase.getInstance().getReference().child("products/").orderByChild("match_with/"
                 + getIntent().getExtras().getString("selected")).equalTo(true);
         mStorageRef = FirebaseStorage.getInstance().getReference();
+
+        if(bundle != null &&bundle.getString("uri") != null) mStorageRef.child("products/" + bundle.getString("uri")).getDownloadUrl().addOnSuccessListener(
+                new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(final Uri uri) {
+                        Picasso inst = Picasso.get();
+                        inst.setIndicatorsEnabled(true);
+                        inst.load(uri)
+                                .into(image);}
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("abe", "Erorr");
+            }
+        });
 
         myQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -87,5 +113,9 @@ public class WineDetail extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    }
+
+    private String getHeaderSubtitle() {
+        return getString(R.string.wine_detail_subtitle);
     }
 }

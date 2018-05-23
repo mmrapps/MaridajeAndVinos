@@ -113,7 +113,7 @@
     <string name="search_title">Búsqueda</string>
     <string name="wine_cat_title">¿Qué vino tomará?</string>
     <string name="wine">Vino</string>
-    <string name="wine_per_food_title">Se recomienda con los siguientes vinos</string>
+    <string name="wine_per_food_title">Se recomienda con los siguientes vinos:</string>
 
     <!-- Strings para el slide de ayuda -->
     <string name="next">SIGUIENTE</string>
@@ -123,12 +123,15 @@
     <string name="slide_1_title">El mejor maridaje</string>
     <string name="slide_1_desc">Logre combinar de manera efectiva un vino con una comida, sin ser un experto.</string>
 
-    <string name="slide_2_title">Ya tengo un vino</string>
+    <string name="slide_2_title">Si ya tengo un vino</string>
     <string name="slide_2_desc">Elija la primera opción del menú y de acuerdo al vino que tenga le proporcionaremos opciones de comida que va a ir perfecto para lograr el maridaje.</string>
 
-    <string name="slide_3_title">Sé que voy a comer</string>
+    <string name="slide_3_title">Si sé qué voy a comer</string>
     <string name="slide_3_desc">Si tiene en mente la comida que quiere disfrutar, elija la segunda opción del menú y le recomendaremos vinos con los que logrará el maridaje.</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
+    <string name="wine_detail_subtitle">Este vino se recomienda con:</string>
+    <string name="main_menu_wine">Tengo un vino</string>
+    <string name="main_menu_food">Tengo una comida</string>
 </resources>
