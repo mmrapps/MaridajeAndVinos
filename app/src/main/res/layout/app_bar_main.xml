@@ -27,11 +27,10 @@
         android:id="@+id/shareicon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="clip_horizontal|bottom|right"
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@color/colorPrimary"
-        app:srcCompat="@drawable/ic_share_white_48dp" />
-        app:elevation="14dp"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@drawable/ic_share_white_48dp"
+        app:elevation="16dp" />
 
 </android.support.design.widget.CoordinatorLayout>
