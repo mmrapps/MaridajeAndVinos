@@ -31,7 +31,7 @@ public class CategoriesAdapter extends GeneralAdapter {
                 Category element = (Category) mListChildren.get(position);
                 Log.d("abe", "Clickeado " + element.getKey()) ;
                 Intent intent;
-                if(bundleExtras.getString("category") != null){
+                if(bundleExtras != null && bundleExtras.getString("category") != null){
                     switch (bundleExtras.getString("category")){
                         case "wines":
                             intent = new Intent(context, WinePerCategory.class);
