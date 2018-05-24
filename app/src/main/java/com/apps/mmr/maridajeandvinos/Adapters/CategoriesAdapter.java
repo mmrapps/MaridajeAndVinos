@@ -19,6 +19,8 @@ import java.util.Map;
 
 public class CategoriesAdapter extends GeneralAdapter {
 
+    private static String lastCategory = "wines";
+
     public CategoriesAdapter(Context context, StorageReference storageReference, Bundle extras) {
         super(context, storageReference, extras);
     }
@@ -31,26 +33,26 @@ public class CategoriesAdapter extends GeneralAdapter {
                 Category element = (Category) mListChildren.get(position);
                 Log.d("abe", "Clickeado " + element.getKey()) ;
                 Intent intent;
-                if(bundleExtras != null && bundleExtras.getString("category") != null){
-                    switch (bundleExtras.getString("category")){
-                        case "wines":
-                            intent = new Intent(context, WinePerCategory.class);
-                            break;
-                        case "foods":
-                            intent = new Intent(context, FoodPerCategory.class);
-                            break;
-                        default:
-                            intent = new Intent(context, WinePerCategory.class);
-                            break;
-                    }
-
-                    intent.putExtra("selected",element.getKey());
-                    intent.putExtra("title", element.getName());
-                    intent.putExtra("type", element.getType());
-                    intent.putExtra("uri", element.getImage());
-                    context.startActivity(intent);
-                    return;
+                if(bundleExtras != null && bundleExtras.getString("category") != null)
+                    lastCategory = bundleExtras.getString("category");
+                switch (lastCategory){
+                    case "wines":
+                        intent = new Intent(context, WinePerCategory.class);
+                        break;
+                    case "foods":
+                        intent = new Intent(context, FoodPerCategory.class);
+                        break;
+                    default:
+                        intent = new Intent(context, WinePerCategory.class);
+                        break;
                 }
+                intent.putExtra("selected",element.getKey());
+                intent.putExtra("title", element.getName());
+                intent.putExtra("type", element.getType());
+                intent.putExtra("uri", element.getImage());
+                context.startActivity(intent);
+                return;
+
 
 
             }
