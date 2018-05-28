@@ -10,13 +10,6 @@
     tools:context="com.apps.mmr.maridajeandvinos.Activitys.WineDetail"
     tools:showIn="@layout/activity_wine_detail">
 
-    <TextView
-        android:id="@+id/wineDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_wine_detail"
         android:layout_width="match_parent"

@@ -86,7 +86,7 @@ public abstract class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter
 
                         Log.d("abe", uri.toString());
                         Picasso inst = Picasso.get();
-                        inst.setIndicatorsEnabled(true);
+                        //inst.setIndicatorsEnabled(true);
                         inst.load(uri.toString())
                                 .into(holder.cardPhoto);
                         /*GlideApp.with(context)

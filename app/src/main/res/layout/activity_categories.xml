@@ -39,6 +39,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:paddingBottom="8dp"
+                android:shadowColor="@color/TransparentGrey"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="0.01"
                 android:paddingLeft="32dp"
                 android:textAlignment="textStart"
                 android:textColor="@android:color/white"
@@ -50,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay"/>
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 
 

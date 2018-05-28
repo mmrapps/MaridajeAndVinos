@@ -17,6 +17,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import jp.wasabeef.picasso.transformations.BlurTransformation;
+
 public class WinePerFood extends CategoriesActivity {
     @Override
     protected void setToolbarBackground(StorageReference mStorageRef) {
@@ -27,8 +29,8 @@ public class WinePerFood extends CategoriesActivity {
                     @Override
                     public void onSuccess(final Uri uri) {
                         Picasso inst = Picasso.get();
-                        inst.setIndicatorsEnabled(true);
-                        inst.load(uri)
+                        //inst.setIndicatorsEnabled(true);
+                        inst.load(uri).transform(new BlurTransformation(getApplicationContext()))
                                 .into(image);}
                 }).addOnFailureListener(new OnFailureListener() {
             @Override

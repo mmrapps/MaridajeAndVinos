@@ -10,6 +10,9 @@ import com.apps.mmr.maridajeandvinos.R;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
+import jp.wasabeef.picasso.transformations.BlurTransformation;
 
 /**
  * Created by angel on 12/03/18.
@@ -21,7 +24,10 @@ public class FoodCategories extends CategoriesActivity {
     @Override
     protected void setToolbarBackground(StorageReference mStorageRef) {
         ImageView image = (ImageView) findViewById(R.id.place_image);
-        image.setImageResource(getToolbarBackground());
+        Picasso inst = Picasso.get();
+        //inst.setIndicatorsEnabled(true);
+        inst.load(getToolbarBackground()).transform(new BlurTransformation(getApplicationContext()))
+                .into(image);
     }
 
     @Override

@@ -26,5 +26,9 @@
         <item name="android:shadowRadius">0.01</item>
     </style>
 
+    <style name="toolbar_text_appearence" parent="@style/Base.TextAppearance.AppCompat.Title">
+        <item name="android:textSize">18sp</item>
+    </style>
+
 
 </resources>

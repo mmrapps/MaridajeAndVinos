@@ -31,6 +31,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import jp.wasabeef.picasso.transformations.BlurTransformation;
+
 
 public class WineDetail extends AppCompatActivity {
     private RecyclerView mRecyclerView;
@@ -48,8 +50,7 @@ public class WineDetail extends AppCompatActivity {
         TextView textHeader = (TextView)findViewById(R.id.toolbar_text);
         textHeader.setText(getHeaderSubtitle());
         setSupportActionBar(toolbar);
-        TextView wineDescription = (TextView)findViewById(R.id.wineDetail);
-        if(bundle != null &&bundle.getString("description") != null) wineDescription.setText(bundle.getString("description"));
+
         final ImageView image = (ImageView) findViewById(R.id.place_image);
 
 
@@ -62,8 +63,8 @@ public class WineDetail extends AppCompatActivity {
                     @Override
                     public void onSuccess(final Uri uri) {
                         Picasso inst = Picasso.get();
-                        inst.setIndicatorsEnabled(true);
-                        inst.load(uri)
+                        //inst.setIndicatorsEnabled(true);
+                        inst.load(uri).transform(new BlurTransformation(getApplicationContext()))
                                 .into(image);}
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
