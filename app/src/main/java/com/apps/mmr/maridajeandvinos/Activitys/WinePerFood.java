@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.apps.mmr.maridajeandvinos.Adapters.GeneralAdapter;
 import com.apps.mmr.maridajeandvinos.Adapters.ProductsAdapter;
+import com.apps.mmr.maridajeandvinos.Adapters.DetailsAdapter;
 import com.apps.mmr.maridajeandvinos.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -52,7 +53,7 @@ public class WinePerFood extends CategoriesActivity {
 
     @Override
     protected GeneralAdapter getAdapter(Context context, StorageReference mStorageRef, Bundle extras) {
-        return new ProductsAdapter(context, mStorageRef, extras, false);
+        return new DetailsAdapter(context, mStorageRef, extras, true);
     }
 
     @Override
