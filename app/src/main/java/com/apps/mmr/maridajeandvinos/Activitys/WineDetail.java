@@ -53,7 +53,6 @@ public class WineDetail extends AppCompatActivity {
 
         final ImageView image = (ImageView) findViewById(R.id.place_image);
 
-
         Query myQuery = FirebaseDatabase.getInstance().getReference().child("products/").orderByChild("match_with/"
                 + bundle.getString("selected")).equalTo(true);
         mStorageRef = FirebaseStorage.getInstance().getReference();

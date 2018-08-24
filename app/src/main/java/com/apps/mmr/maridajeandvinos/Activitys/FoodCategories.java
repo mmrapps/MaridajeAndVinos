@@ -25,7 +25,7 @@ public class FoodCategories extends CategoriesActivity {
     protected void setToolbarBackground(StorageReference mStorageRef) {
         ImageView image = (ImageView) findViewById(R.id.place_image);
         Picasso inst = Picasso.get();
-        //inst.setIndicatorsEnabled(true);
+        inst.setIndicatorsEnabled(true);
         inst.load(getToolbarBackground()).transform(new BlurTransformation(getApplicationContext()))
                 .into(image);
     }
@@ -46,8 +46,9 @@ public class FoodCategories extends CategoriesActivity {
     }
 
     @Override
-    protected Query getQueryFirebase() {
-        Query myQuery = FirebaseDatabase.getInstance().getReference("categories/").orderByChild("type").equalTo("food");
+    protected Query getQueryFirebase(FirebaseDatabase firebaseDatabase) {
+
+        Query myQuery = firebaseDatabase.getReference("categories/").orderByChild("type").equalTo("food");
         return myQuery;
     }
 

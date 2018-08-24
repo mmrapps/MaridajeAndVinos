@@ -56,16 +56,17 @@ public class WinePerFood extends CategoriesActivity {
     }
 
     @Override
-    protected Query getQueryFirebase() {
+    protected Query getQueryFirebase(FirebaseDatabase firebaseDatabase) {
         Bundle bundle = getIntent().getExtras();
         Log.d("abe", bundle.getString("match_with"));
         Query myQuery;
+
         if(bundle != null && bundle.getString("match_with") != null)
-            myQuery  = FirebaseDatabase.getInstance().getReference("products/").orderByKey().startAt(
+            myQuery  = firebaseDatabase.getReference("products/").orderByKey().startAt(
                     bundle.getString("match_with").split(":")[0]).endAt(
                     bundle.getString("match_with").split(":")[bundle.getString("match_with").split(":").length-1]);
         else
-            myQuery = FirebaseDatabase.getInstance().getReference("products/").orderByChild("category").equalTo("blanco");
+            myQuery = firebaseDatabase.getReference("products/").orderByChild("category").equalTo("blanco");
         return myQuery;
     }
 

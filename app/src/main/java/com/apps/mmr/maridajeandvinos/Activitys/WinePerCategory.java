@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import jp.wasabeef.picasso.transformations.BlurTransformation;
@@ -32,10 +34,23 @@ public class WinePerCategory extends CategoriesActivity {
                 new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(final Uri uri) {
-                        Picasso inst = Picasso.get();
+                        final Picasso inst = Picasso.get();
                         //inst.setIndicatorsEnabled(true);
-                        inst.load(uri).transform(new BlurTransformation(getApplicationContext()))
-                                .into(image);}
+                        inst.load(uri).networkPolicy(NetworkPolicy.OFFLINE).transform(new BlurTransformation(getApplicationContext()))
+                                .into(image, new Callback() {
+                                    @Override
+                                    public void onSuccess() {
+
+                                    }
+
+                                    @Override
+                                    public void onError(Exception e) {
+                                        Log.d("abe", "Imposible to get the cache image " + e.getMessage());
+                                        inst.load(uri).transform(new BlurTransformation(getApplicationContext()))
+                                                .into(image);
+
+                                    }
+                                });}
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
@@ -60,12 +75,13 @@ public class WinePerCategory extends CategoriesActivity {
     }
 
     @Override
-    protected Query getQueryFirebase() {
+    protected Query getQueryFirebase(FirebaseDatabase firebaseDatabase) {
         Bundle bundle = getIntent().getExtras();
         Query myQuery;
         if(bundle != null && bundle.getString("selected") != null)
             lastSelected = bundle.getString("selected");
-        myQuery = FirebaseDatabase.getInstance().getReference("products/").orderByChild("category").equalTo(lastSelected);
+
+        myQuery = firebaseDatabase.getReference("products/").orderByChild("category").equalTo(lastSelected);
         return myQuery;
     }
 
