@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.apps.mmr.maridajeandvinos.Adapters.DetailAdapter;
 import com.apps.mmr.maridajeandvinos.Adapters.GeneralAdapter;
 import com.apps.mmr.maridajeandvinos.Adapters.ProductsAdapter;
 import com.apps.mmr.maridajeandvinos.R;
@@ -52,7 +53,7 @@ public class WinePerFood extends CategoriesActivity {
 
     @Override
     protected GeneralAdapter getAdapter(Context context, StorageReference mStorageRef, Bundle extras) {
-        return new ProductsAdapter(context, mStorageRef, extras, false);
+        return new DetailAdapter(context, mStorageRef, extras, true);
     }
 
     @Override

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activitys.WineInformation">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/White">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:shadowColor="@color/TransparentGrey"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="0.01"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="30sp"
+        android:textStyle="normal" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
