@@ -10,6 +10,8 @@ import com.apps.mmr.maridajeandvinos.R;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import jp.wasabeef.picasso.transformations.BlurTransformation;
@@ -25,8 +27,7 @@ public class WineCategories extends CategoriesActivity {
     protected void setToolbarBackground(StorageReference mStorageRef) {
         ImageView image = (ImageView) findViewById(R.id.place_image);
         Picasso inst = Picasso.get();
-        //inst.setIndicatorsEnabled(true);
-        inst.load(getToolbarBackground()).transform(new BlurTransformation(getApplicationContext()))
+        inst.load(getToolbarBackground()).networkPolicy(NetworkPolicy.OFFLINE).transform(new BlurTransformation(getApplicationContext()))
                 .into(image);
     }
 
@@ -46,8 +47,9 @@ public class WineCategories extends CategoriesActivity {
     }
 
     @Override
-    protected Query getQueryFirebase() {
-        Query myQuery = FirebaseDatabase.getInstance().getReference("categories/").orderByChild("type").equalTo("wine");
+    protected Query getQueryFirebase(FirebaseDatabase firebaseDatabase) {
+
+        Query myQuery = firebaseDatabase.getReference("categories/").orderByChild("type").equalTo("wine");
         return myQuery;
     }
 

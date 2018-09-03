@@ -18,6 +18,7 @@ import com.apps.mmr.maridajeandvinos.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -28,6 +29,15 @@ public abstract class CategoriesActivity extends AppCompatActivity {
     private GeneralAdapter mAdapter;
     private DatabaseReference mDatabase;
     private StorageReference mStorageRef;
+    private static FirebaseDatabase firebaseDatabase;
+
+    public static FirebaseDatabase getDatabase() {
+        if (firebaseDatabase == null) {
+            firebaseDatabase = FirebaseDatabase.getInstance();
+            firebaseDatabase.setPersistenceEnabled(true);
+        }
+        return firebaseDatabase;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +50,8 @@ public abstract class CategoriesActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        
-        Query myQuery = getQueryFirebase();
+
+        Query myQuery = getQueryFirebase(getDatabase());
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
         setToolbarBackground(mStorageRef);
@@ -95,7 +105,7 @@ public abstract class CategoriesActivity extends AppCompatActivity {
 
     protected abstract GeneralAdapter getAdapter(Context context, StorageReference mStorageRef, Bundle extras);
 
-    protected abstract Query getQueryFirebase();
+    protected abstract Query getQueryFirebase(FirebaseDatabase firebaseDatabase);
 
     public abstract String getHeaderTittle();
 }

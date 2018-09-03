@@ -18,7 +18,6 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import jp.wasabeef.picasso.transformations.BlurTransformation;
-import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 public class FoodPerCategory extends CategoriesActivity {
 
@@ -36,7 +35,7 @@ public class FoodPerCategory extends CategoriesActivity {
                     @Override
                     public void onSuccess(final Uri uri) {
                         Picasso inst = Picasso.get();
-                        //inst.setIndicatorsEnabled(true);
+                        inst.setIndicatorsEnabled(true);
                         inst.load(uri).transform(new BlurTransformation(getApplicationContext()))
                                 .into(image);}
                 }).addOnFailureListener(new OnFailureListener() {
@@ -64,12 +63,13 @@ public class FoodPerCategory extends CategoriesActivity {
     }
 
     @Override
-    protected Query getQueryFirebase() {
+    protected Query getQueryFirebase(FirebaseDatabase firebaseDatabase) {
         Bundle bundle = getIntent().getExtras();
         Query myQuery;
         if(bundle != null && bundle.getString("selected") != null)
             lastSelected =  bundle.getString("selected");
-        myQuery = FirebaseDatabase.getInstance().getReference("products/").orderByChild("category").equalTo(lastSelected);
+
+        myQuery = firebaseDatabase.getReference("products/").orderByChild("category").equalTo(lastSelected);
         return myQuery;
     }
 

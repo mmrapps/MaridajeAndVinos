@@ -35,7 +35,7 @@ public class SearchActivity extends CategoriesActivity {
     }
 
     @Override
-    protected Query getQueryFirebase() {
+    protected Query getQueryFirebase(FirebaseDatabase firebaseDatabase) {
         Bundle bundle = getIntent().getExtras();
         Query myQuery;
         String searchString = (bundle != null) ? bundle.getString("search") : null;
