@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -54,9 +53,9 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                Intent sendIntent  = new Intent();
+                Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, R.string.share_text);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getText(R.string.SHARE_TEXT));
                 sendIntent.setType("text/plain");
                 startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
 
@@ -209,11 +208,12 @@ public class HomeActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_share) {
-            Intent sendIntent  = new Intent();
+            Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, R.string.share_text);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getText(R.string.SHARE_TEXT));
             sendIntent.setType("text/plain");
             startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+
 
 
         } else if (id == R.id.nav_settings) {
